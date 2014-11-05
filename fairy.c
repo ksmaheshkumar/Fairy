@@ -90,10 +90,10 @@ int main(int argc, char ** argv)
   return 0;    
  }    
 
- strncpy(URL,argv[1],BUF);
- strncpy(busca,argv[2],BUF);
- strncpy(lista,argv[3],BUF);
- strncpy(login,argv[4],BUF);
+ strncpy(URL,argv[1],BUF-1);
+ strncpy(busca,argv[2],BUF-1);
+ strncpy(lista,argv[3],BUF-1);
+ strncpy(login,argv[4],BUF-1);
 
   fp = fopen(lista, "r");
     if(!fp) return 1;
@@ -109,9 +109,9 @@ int main(int argc, char ** argv)
 
    fprintf(stdout,"%s %s  ",GREEN,URL);
 // login:pass , concatena... para auth
-   strncpy(auth,login,BUF);
-   strncat(auth,":",BUF);
-   strncat(auth,str,BUF);
+   strncpy(auth,login,BUF-1);
+   strncat(auth,":",BUF-1);
+   strncat(auth,str,BUF-1);
    fprintf(stdout,"try %s ...",auth);
 
    curl_handle = curl_easy_init();
